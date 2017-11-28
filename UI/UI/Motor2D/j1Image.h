@@ -27,11 +27,16 @@ public:
 	bool CleanUp();
 
 	void CreateImage(SDL_Rect* rect);
-	bool Draw();
+
+	void SetInternalPosition(int x, int y);
+
+	void Draw();
 
 	
 
 private:
+
+	iPoint InternalPosition;
 
 	SDL_Rect* rect = nullptr;
 	

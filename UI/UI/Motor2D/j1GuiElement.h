@@ -64,9 +64,22 @@ public:
 
 	virtual void Draw() {};
 
-	virtual void SetSize() {};
+	virtual void SetSize(int width, int height) 
+	{
+		size.x = width;
+		size.y = height;
+	}
 
-	virtual void SetPosition() {};
+	virtual void SetPosition(int x, int y) 
+	{
+		position.x = x;
+		position.y = y;
+	}
+
+	virtual void SetScale(float scale)
+	{
+		this->scale = scale;
+	}
 
 	virtual void Event() {};
 

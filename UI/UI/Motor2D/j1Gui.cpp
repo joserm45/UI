@@ -25,6 +25,10 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 
 	atlas_file_name = conf.child("atlas").attribute("file").as_string("");
 
+	//images
+	SDL_Rect testing = { 10, 10, 100, 100 };
+	CreateImage(&testing, 0, 0);
+
 	return ret;
 }
 
@@ -82,17 +86,18 @@ bool j1Gui::CleanUp()
 }
 
 // const getter for atlas
-const SDL_Texture* j1Gui::GetAtlas() const
+SDL_Texture* j1Gui::GetAtlas() const
 {
 	return atlas;
 }
 
 // class Gui ---------------------------------------------------
 
-void j1Gui::CreateImage(SDL_Rect* rect)
+void j1Gui::CreateImage(SDL_Rect* rect, int x, int y)
 {
 	Image* image = new Image(rect);
 	image->Start();
+	image->SetInternalPosition(x, y);
 	elements.add((GuiElement*)image);
 }
 

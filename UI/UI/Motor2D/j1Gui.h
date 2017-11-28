@@ -39,10 +39,10 @@ public:
 	// TODO 2: Create the factory methods
 	// Gui creation functions
 
-	const SDL_Texture* GetAtlas() const;
+	SDL_Texture* GetAtlas() const;
 
 	//creates and deletes
-	void CreateImage(SDL_Rect* rect);
+	void CreateImage(SDL_Rect* rect, int x, int y);
 
 	void DeleteImage(GuiElement* image);
 
