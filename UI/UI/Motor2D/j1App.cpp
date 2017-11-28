@@ -34,8 +34,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	pathfinding = new j1PathFinding();
 	font = new j1Fonts();
 	gui = new j1Gui();
-	label = new j1Label();
-	image = new j1Image();
+	//label = new j1Label();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -47,8 +46,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(font);
 	AddModule(gui);
-	AddModule(label);
-	AddModule(image);
+
 	// scene last
 	AddModule(scene);
 

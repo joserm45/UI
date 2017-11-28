@@ -5,41 +5,40 @@
 struct SDL_Rect;
 
 
-j1Image::j1Image() : j1Gui()
+Image::Image() : j1Gui()
+{
+	name.create("image");	
+}
+
+Image::Image(SDL_Rect* rect) : j1Gui()
 {
 	name.create("image");
-		
+	this->rect = rect;
 }
-
-j1Image::j1Image(SDL_Rect rect) : j1Gui()
-{
-	SDL_Rect rect = rect;
-	
-}
-j1Image::~j1Image()
+Image::~Image()
 {}
 
-bool j1Image::Awake(pugi::xml_node&)
+bool Image::Start()
 {
-
+	return true;
 }
 
-bool j1Image::Start()
+bool Image::PreUpdate()
 {
-
+	return true;
 }
 
-bool j1Image::PreUpdate()
+bool Image::PostUpdate()
 {
-
+	return true;
 }
 
-bool j1Image::Update(float dt)
+bool Image::CleanUp()
 {
-
+	return true;
 }
 
-void j1Image::CreateImage(SDL_Rect rect)
+void Image::CreateImage(SDL_Rect* rect)
 {
 	this->rect = rect;
 }

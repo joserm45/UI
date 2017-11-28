@@ -7,16 +7,13 @@
 struct SDL_Texture;
 struct SDL_Rect;
 
-class j1Image : public j1Gui
+class Image : public j1Gui
 {
 public:
 
-	j1Image();
-	j1Image(SDL_Rect rect);
-	~j1Image();
-
-	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	Image();
+	Image(SDL_Rect* rect);
+	~Image();
 
 	// Called before the first frame
 	bool Start();
@@ -24,18 +21,19 @@ public:
 	// Called each loop iteration
 	bool PreUpdate();
 
-	bool Update(float dt);
+	bool PostUpdate();
 
 	// Called before quitting
 	bool CleanUp();
 
-	void CreateImage(SDL_Rect);
+	void CreateImage(SDL_Rect* rect);
 	bool Draw();
 
 	
 
 private:
-	SDL_Rect rect;
+
+	SDL_Rect* rect = nullptr;
 	
 };
 

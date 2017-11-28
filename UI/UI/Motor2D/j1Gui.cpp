@@ -6,6 +6,7 @@
 #include "j1Fonts.h"
 #include "j1Input.h"
 #include "j1Gui.h"
+#include "j1Image.h"
 
 j1Gui::j1Gui() : j1Module()
 {
@@ -32,24 +33,49 @@ bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
+	p2List_item<GuiElement*>* item = elements.start;
+	while (item != NULL)
+	{
+		item->data->Start();
+		item = item->next;
+	}
+
 	return true;
 }
 
 // Update all guis
 bool j1Gui::PreUpdate()
 {
+	p2List_item<GuiElement*>* item = elements.start;
+	while (item != NULL)
+	{
+		item->data->PreUpdate();
+		item = item->next;
+	}
 	return true;
 }
 
 // Called after all Updates
 bool j1Gui::PostUpdate()
 {
+	p2List_item<GuiElement*>* item = elements.start;
+	while (item != NULL)
+	{
+		item->data->PostUpdate();
+		item = item->next;
+	}
 	return true;
 }
 
 // Called before quitting
 bool j1Gui::CleanUp()
 {
+	p2List_item<GuiElement*>* item = elements.start;
+	while (item != NULL)
+	{
+		item->data->CleanUp();
+		item = item->next;
+	}
 	LOG("Freeing GUI");
 
 	return true;
@@ -62,4 +88,32 @@ const SDL_Texture* j1Gui::GetAtlas() const
 }
 
 // class Gui ---------------------------------------------------
+
+void j1Gui::CreateImage(SDL_Rect* rect)
+{
+	Image* image = new Image(rect);
+	image->Start();
+	elements.add((GuiElement*)image);
+}
+
+void j1Gui::DeleteImage(GuiElement* image)
+{
+	if (image != nullptr)
+	{
+		int find = elements.find(image);
+		int current_position = 0;
+
+		p2List_item<GuiElement*>* item = elements.start;
+		while (item != NULL)
+		{
+			if (current_position == find)
+			{
+				elements.del(item);
+				return;
+			}
+			item = item->next;
+			current_position++;
+		}
+	}
+}
 

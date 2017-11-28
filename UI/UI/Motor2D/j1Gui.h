@@ -6,6 +6,9 @@
 
 #define CURSOR_WIDTH 2
 
+struct SDL_Texture;
+struct SDL_Rect;
+
 // TODO 1: Create your structure of classes
 
 // ---------------------------------------------------
@@ -37,6 +40,11 @@ public:
 	// Gui creation functions
 
 	const SDL_Texture* GetAtlas() const;
+
+	//creates and deletes
+	void CreateImage(SDL_Rect* rect);
+
+	void DeleteImage(GuiElement* image);
 
 private:
 

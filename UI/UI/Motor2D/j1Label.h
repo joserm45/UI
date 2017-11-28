@@ -1,7 +1,10 @@
-#pragma once
+/*#pragma once
 #ifndef _j1LABEL_H
 #define _j1LABEL_H
 #include "j1GuiElement.h"
+
+struct SDL_Rect;
+struct _TTF_Font;
 
 class j1Label : public GuiElement
 {
@@ -36,4 +39,4 @@ private:
 };
 
 
-#endif // !j1_LABEL_H
+#endif // !j1_LABEL_H*/
