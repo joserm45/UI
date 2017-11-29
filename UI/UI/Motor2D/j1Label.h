@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 #ifndef _j1LABEL_H
 #define _j1LABEL_H
 #include "j1GuiElement.h"
@@ -11,8 +11,8 @@ class j1Label : public GuiElement
 public:
 
 	j1Label();
-	j1Label(iPoint pos, p2SString label, _TTF_Font font);
-	~j1Label();
+	j1Label(p2SString label);
+	//~j1Label();
 
 	// Called before render is available
 	bool Awake(pugi::xml_node&);
@@ -32,11 +32,16 @@ public:
 
 	void CreateString();
 
+	void InternalPosition(int x, int y);
+
+	void Draw();
 private:
 
 	p2SString label;
+	iPoint internal_position;
+	
 
 };
 
 
-#endif // !j1_LABEL_H*/
+#endif // !j1_LABEL_H
