@@ -62,8 +62,6 @@ public:
 
 	//non inherited funcitons
 
-	virtual void Draw() {};
-
 	virtual void SetSize(int width, int height) 
 	{
 		size.x = width;
@@ -80,8 +78,6 @@ public:
 	{
 		this->scale = scale;
 	}
-
-	virtual void Event() {};
 
 public:
 

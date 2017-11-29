@@ -7,12 +7,12 @@
 struct SDL_Texture;
 struct SDL_Rect;
 
-class Image : public j1Gui
+class Image : public GuiElement
 {
 public:
 
 	Image();
-	Image(SDL_Rect* rect);
+	Image(SDL_Rect rect);
 	~Image();
 
 	// Called before the first frame
@@ -26,8 +26,6 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	void CreateImage(SDL_Rect* rect);
-
 	void SetInternalPosition(int x, int y);
 
 	void Draw();
@@ -38,7 +36,7 @@ private:
 
 	iPoint InternalPosition;
 
-	SDL_Rect* rect = nullptr;
+	SDL_Rect* rect;
 	
 };
 

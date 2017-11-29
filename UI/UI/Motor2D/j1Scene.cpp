@@ -103,7 +103,7 @@ bool j1Scene::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= floor(200.0f * dt);
 
-	App->map->Draw();
+	//App->map->Draw();
 
 	int x, y;
 	App->input->GetMousePosition(x, y);
@@ -113,6 +113,8 @@ bool j1Scene::Update(float dt)
 					App->map->data.tile_width, App->map->data.tile_height,
 					App->map->data.tilesets.count(),
 					map_coordinates.x, map_coordinates.y);
+
+	LOG("pos x: %i pos y: %i", map_coordinates.x, map_coordinates.y);
 
 	//App->win->SetTitle(title.GetString());
 

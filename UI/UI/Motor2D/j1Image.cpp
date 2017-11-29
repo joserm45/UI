@@ -1,20 +1,21 @@
 #include "j1Image.h"
 #include "j1Render.h"
+#include "j1Gui.h"
 
 #include "SDL\include\SDL.h"
 
 struct SDL_Rect;
 
 
-Image::Image() : j1Gui()
+Image::Image() : GuiElement()
 {
 	name.create("image");	
 }
 
-Image::Image(SDL_Rect* rect) : j1Gui()
+Image::Image(SDL_Rect rect) : GuiElement()
 {
 	name.create("image");
-	this->rect = rect;
+	this->rect = new SDL_Rect(rect);
 }
 Image::~Image()
 {}
@@ -46,12 +47,7 @@ void Image::SetInternalPosition(int x, int y)
 	InternalPosition.y = y;
 }
 
-void Image::CreateImage(SDL_Rect* rect)
-{
-	this->rect = rect;
-}
-
 void Image::Draw()
 {
-	App->render->Blit(App->gui->GetAtlas(), InternalPosition.x, InternalPosition.y, rect);
+	App->render->Blit(App->gui->GetAtlas(), position.x, position.y, rect);
 }

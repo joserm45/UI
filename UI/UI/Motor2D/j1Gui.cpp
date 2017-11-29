@@ -24,10 +24,7 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 	bool ret = true;
 
 	atlas_file_name = conf.child("atlas").attribute("file").as_string("");
-
-	//images
-	SDL_Rect testing = { 10, 10, 100, 100 };
-	CreateImage(&testing, 0, 0);
+	atlas_file_name = "textures/test.png";
 
 	return ret;
 }
@@ -35,6 +32,10 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 // Called before the first frame
 bool j1Gui::Start()
 {
+	//images
+	SDL_Rect testing = { 40, 100, 100, 100 };
+	CreateImage(testing, 0, 0);
+
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
 	p2List_item<GuiElement*>* item = elements.start;
@@ -93,11 +94,11 @@ SDL_Texture* j1Gui::GetAtlas() const
 
 // class Gui ---------------------------------------------------
 
-void j1Gui::CreateImage(SDL_Rect* rect, int x, int y)
+void j1Gui::CreateImage(SDL_Rect rect, int x, int y)
 {
 	Image* image = new Image(rect);
 	image->Start();
-	image->SetInternalPosition(x, y);
+	image->SetPosition(x, y);
 	elements.add((GuiElement*)image);
 }
 
@@ -120,5 +121,10 @@ void j1Gui::DeleteImage(GuiElement* image)
 			current_position++;
 		}
 	}
+}
+
+void j1Gui::ManageEvent(GuiElement* element)
+{
+	
 }
 

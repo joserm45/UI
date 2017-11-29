@@ -12,6 +12,18 @@ struct SDL_Rect;
 // TODO 1: Create your structure of classes
 
 // ---------------------------------------------------
+
+enum GuiEvent
+{
+	MOUSE_ENTER,
+	MOUSE_LEAVE,
+	MOUSE_RCLICK, 
+	MOUSE_LCLICK,
+	TAB_ENTER,
+	TAB_LEAVE,
+	INTRO
+};
+
 class j1Gui : public j1Module
 {
 public:
@@ -42,9 +54,11 @@ public:
 	SDL_Texture* GetAtlas() const;
 
 	//creates and deletes
-	void CreateImage(SDL_Rect* rect, int x, int y);
+	void CreateImage(SDL_Rect rect, int x, int y);
 
 	void DeleteImage(GuiElement* image);
+
+	void ManageEvent(GuiElement* element);
 
 private:
 
